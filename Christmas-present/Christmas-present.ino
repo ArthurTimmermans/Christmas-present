@@ -21,6 +21,9 @@ void fullOff(){
   delay(5000);
 }
 void loop() {
+  // temporary not needed analogRead statement if(analogRead(A)) >= 400){
     fullOn();
-    fullOff();
+    fullOf();
+    
+  // temporary not needed bracket analogread }
 }
