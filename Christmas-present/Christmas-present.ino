@@ -12,7 +12,15 @@ void fullOn(){
   for(int z = 0; z <= 13; z++){
     digitalWrite(z, HIGH);
   }
+  delay(5000);
+}
+void fullOff(){
+  for(int y = 0; y <= 13; y++){
+    digitalWrite(y, LOW);
+  }
+  delay(5000);
 }
 void loop() {
-fullOn();
+    fullOn();
+    fullOff();
 }
