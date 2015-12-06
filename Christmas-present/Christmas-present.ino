@@ -8,6 +8,11 @@ void setup() {
   }
 }
 
+void fullOn(){
+  for(int z = 0; z <= 13; z++){
+    digitalWrite(z, HIGH);
+  }
+}
 void loop() {
-
+fullOn();
 }
