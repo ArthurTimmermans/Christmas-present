@@ -7,6 +7,8 @@ int chase1PrevState;
 
 int chase2Reset = 0;
 
+unsigned long chase4Prev = 0;
+
 void setup() {
   // Pin setup
   // Green LED: 2,4,6,8,10,12
@@ -83,20 +85,39 @@ void chase3(){
     digitalWrite(13, HIGH);
 }
 
+void chase4(){
+  unsigned long chase4Time = millis();
+  int chase4Interval = 500;
+
+  if(chase4Time - chase4Prev <= chase4Interval){
+    for(int c41 = 2; c41 <= 13; c41++){
+      digitalWrite(c41, HIGH);
+    }
+    delay(500);
+  }else{
+    for(int c42 = 2; c42 <= 13; c42++){
+      digitalWrite(c42, LOW);
+    }
+    delay(500);
+    chase4Prev = chase4Time;    
+  }
+}
+
 void loop() {
   // temporary not needed analogRead statement if(analogRead(A)) >= 400){
     unsigned long loopTime = millis();
 
     if(loopTime - loopPrev <= 5000){
       fullOn();
-      //chase4();
     }else if ((loopTime - loopPrev >= 5000) && (loopTime - loopPrev <= 10000)){
     //fullOff();
       chase1();
     }else if((loopTime - loopPrev >= 10000) && (loopTime - loopPrev <= 13000)){
       chase2();
-    }else if((loopTime - loopPrev >= 13000) && (loopTime - loopPrev <= 23000)){
+    }else if((loopTime - loopPrev >= 13000) && (loopTime - loopPrev <= 18000)){
       chase3();
+    }else if((loopTime - loopPrev >= 18000) && (loopTime - loopPrev <= 23000)){
+      chase4();
     }else{
       chase2Reset = 0;
       loopPrev = loopTime;
