@@ -64,8 +64,23 @@ void chase2(){
   for(int c2 = 2; c2 <= 14; c2++){
     digitalWrite(c2, HIGH);
     digitalWrite(c2-1, LOW);
-    delay(200);
+    delay(100);
   }
+}
+
+void chase3(){
+    digitalWrite(2, HIGH);
+    digitalWrite(3, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(5, HIGH);
+    digitalWrite(6, HIGH);
+    digitalWrite(7, HIGH);
+    digitalWrite(8, HIGH);
+    digitalWrite(9, LOW);
+    digitalWrite(10, LOW);
+    digitalWrite(11, HIGH);
+    digitalWrite(12, HIGH);
+    digitalWrite(13, HIGH);
 }
 
 void loop() {
@@ -74,13 +89,14 @@ void loop() {
 
     if(loopTime - loopPrev <= 5000){
       fullOn();
+      //chase4();
     }else if ((loopTime - loopPrev >= 5000) && (loopTime - loopPrev <= 10000)){
     //fullOff();
       chase1();
-    }else if((loopTime - loopPrev >= 10000) && (loopTime - loopPrev <= 16000)){
+    }else if((loopTime - loopPrev >= 10000) && (loopTime - loopPrev <= 13000)){
       chase2();
-    }else if((loopTime - loopPrev >= 16000) && (loopTime - loopPrev <= 26000)){
-      //chase3();
+    }else if((loopTime - loopPrev >= 13000) && (loopTime - loopPrev <= 23000)){
+      chase3();
     }else{
       chase2Reset = 0;
       loopPrev = loopTime;
