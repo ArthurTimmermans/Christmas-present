@@ -17,6 +17,8 @@ void setup() {
   for(int x = 2; x <= 13; x++){
     pinMode(x,OUTPUT);
   }
+
+  Serial.begin(9600);
 }
 
 void fullOn(){
@@ -104,7 +106,8 @@ void chase4(){
 }
 
 void loop() {
-  // temporary not needed analogRead statement if(analogRead(A)) >= 400){
+  Serial.println(analogRead(A0));
+  if(analogRead(A0) >= 10){
     unsigned long loopTime = millis();
 
     if(loopTime - loopPrev <= 5000){
@@ -122,5 +125,9 @@ void loop() {
       chase2Reset = 0;
       loopPrev = loopTime;
     }
-  // temporary not needed bracket analogread }
+  }else{
+    for(int x = 2; x <= 13; x++){
+      digitalWrite(x, LOW);
+    }
+  }
 }
