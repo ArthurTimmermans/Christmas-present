@@ -17,8 +17,6 @@ void setup() {
   for(int x = 2; x <= 13; x++){
     pinMode(x,OUTPUT);
   }
-
-  Serial.begin(9600);
 }
 
 void fullOn(){
@@ -106,20 +104,19 @@ void chase4(){
 }
 
 void loop() {
-  Serial.println(analogRead(A0));
-  if(analogRead(A0) >= 10){
+  if(analogRead(A0) >= 200){
     unsigned long loopTime = millis();
 
-    if(loopTime - loopPrev <= 5000){
+    if(loopTime - loopPrev <= 8000){
       fullOn();
-    }else if ((loopTime - loopPrev >= 5000) && (loopTime - loopPrev <= 10000)){
+    }else if ((loopTime - loopPrev >= 8000) && (loopTime - loopPrev <= 13000)){
     //fullOff();
       chase1();
-    }else if((loopTime - loopPrev >= 10000) && (loopTime - loopPrev <= 13000)){
+    }else if((loopTime - loopPrev >= 13000) && (loopTime - loopPrev <= 16000)){
       chase2();
-    }else if((loopTime - loopPrev >= 13000) && (loopTime - loopPrev <= 18000)){
+    }else if((loopTime - loopPrev >= 16000) && (loopTime - loopPrev <= 21000)){
       chase3();
-    }else if((loopTime - loopPrev >= 18000) && (loopTime - loopPrev <= 23000)){
+    }else if((loopTime - loopPrev >= 21000) && (loopTime - loopPrev <= 26000)){
       chase4();
     }else{
       chase2Reset = 0;
